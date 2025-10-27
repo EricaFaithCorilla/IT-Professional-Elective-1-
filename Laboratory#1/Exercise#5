@@ -18,21 +18,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Step 1: Initialize views
+        // Initialize views
         imageSwitcher = findViewById(R.id.imageSwitcher)
         btnSwitchImage = findViewById(R.id.btnSwitchImage)
 
-        // Step 2: Setup ImageSwitcher factory (required)
+        // Setup ImageSwitcher factory (required)
         imageSwitcher.setFactory {
             val imageView = ImageView(applicationContext)
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
             imageView
         }
 
-        // Step 3: Set the first image
+        // Set the first image
         imageSwitcher.setImageResource(images[currentIndex])
 
-        // Step 4: Handle button click to switch images
+        // Handle button click to switch images
         btnSwitchImage.setOnClickListener {
             currentIndex = (currentIndex + 1) % images.size
             imageSwitcher.setImageResource(images[currentIndex])
